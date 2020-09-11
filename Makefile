@@ -16,7 +16,7 @@ HEDR =
 
 LIBFT = ./libft
 
-SRCS = main.c 
+SRCS = handle_input.c main.c 
 
 OBJS = $(SRCS:.c=.o)
 FLAGS = -Wall -Werror -Wextra
