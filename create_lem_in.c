@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_input.c                                     :+:      :+:    :+:   */
+/*   create_lem_in.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/11 11:26:00 by jkuusist          #+#    #+#             */
-/*   Updated: 2020/09/11 11:26:00 by jkuusist         ###   ########.fr       */
+/*   Created: 2020/09/16 11:25:00 by jkuusist          #+#    #+#             */
+/*   Updated: 2020/09/16 11:25:00 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	handle_num_ants(char *s, t_lem_in *lem_in)
-{
-	lem_in->num_ants = ft_atoi(s);
-}
+#include "includes/lem_in.h"
+#include <stdlib.h>
 
-int		handle_input(char *s)
+t_lem_in	*create_lem_in(void)
 {
-	//TBI
+	t_lem_in *new;
 
-	return (1);
+	if (!(new = (t_lem_in*)malloc(sizeof(t_lem_in))))
+		exit(-1);
+	new->map = NULL;
+	return (new);
 }

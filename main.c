@@ -18,6 +18,9 @@ int main(/*int argc, char **argv*/)
 {
 	int 	ret;
 	char	*s;
+	t_lem_in *lem_in;
+
+	lem_in = create_lem_in();
 
 	ret = get_next_line(0, &s);
 
