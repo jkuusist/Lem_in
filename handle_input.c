@@ -12,12 +12,38 @@
 
 void	handle_num_ants(char *s, t_lem_in *lem_in)
 {
-	lem_in->num_ants = ft_atoi(s);
+	lem_in->num_ants = ft_atoi_error(s);
+	lem_in->map = create_map_link(s, 0);
+	lem_in->map = lem_in->map->next;
 }
 
-int		handle_input(char *s)
+void	handle_input(t_lem_in *lem_in)
 {
-	//TBI
+	int		ret;
+	char	*s;
+	int		line_num;
 
-	return (1);
+	ret = 1;
+	line_num = 1;
+	while (ret == 1)
+	{
+		ret = get_next_line(0, &s);
+		lem_in->map = create_map_link(s, line_num);
+		lem_in->map = lem_in->map->next;
+		
+		if (s[0] == '#')
+		{
+			if (s[1] == '#')
+				handle_modifier(); //TBI
+			else
+				handle_comment(); //TBI
+		}
+		else if (ft_strchr(s, '-'))
+			handle_link(); //TBI
+		else if (has_digit(s))
+			handle_room(); //TBI
+
+
+		free(s);
+	}
 }

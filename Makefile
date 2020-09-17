@@ -16,7 +16,7 @@ HEDR =
 
 LIBFT = ./libft
 
-SRCS = handle_input.c main.c 
+SRCS = create_lem_in.c destroy_lem_in.c ft_atoi_error.c handle_input.c main.c 
 
 OBJS = $(SRCS:.c=.o)
 FLAGS = -Wall -Werror -Wextra
