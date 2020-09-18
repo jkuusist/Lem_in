@@ -41,7 +41,7 @@ void	handle_input(t_lem_in *lem_in)
 		else if (ft_strchr(s, '-'))
 			handle_link(); //TBI
 		else if (has_digit(s))
-			handle_room(); //TBI
+			handle_room(s); //TBI
 
 
 		free(s);

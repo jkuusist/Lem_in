@@ -17,6 +17,7 @@ typedef struct	s_lem_in
 {
 	struct s_map	*map;
 	int				num_ants;
+	int				num_rooms;
 	
 }				t_lem_in;
 
@@ -27,6 +28,14 @@ typedef struct	s_map
 	struct s_map	*next;
 }				t_map;
 
+typedef struct	s_room
+{
+	char	*name;
+	int		x_coord;
+	int		y_coord;
+	int		is_start;
+	int		is_end;
+}				t_room;
 
 t_lem_in	*create_lem_in(void);
 void		destroy_lem_in(t_lem_in *lem_in);
