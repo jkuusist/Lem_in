@@ -12,12 +12,14 @@
 
 #include <stdlib.h>
 
-void	handle_room(char *s)
+void	handle_room(char *s, t_lem_in *lem_in)
 {
 	t_room	*new;
 	char	*s_start;
+	t_room	*temp;
 
 	s_start = s;
+	temp = lem_in->room;
 	if !(new = (t_room*)malloc(sizeof(t_room)))
 		exit (-1);
 	if ((s[0] == 'L') || (s[0] == '#'))
@@ -33,4 +35,13 @@ void	handle_room(char *s)
 		s--;
 	new->x_coord = ft_atoi(s);
 	new->name = ft_strndup(s_start, (s - s_start));
+	new->next = NULL;
+	if (!(lem_in->room))
+		lem_in->room = new;
+	else
+	{
+		while (temp->next)
+			temp = temp->next;
+		temp->next = new;
+	}
 }

@@ -20,5 +20,8 @@ t_lem_in	*create_lem_in(void)
 	if (!(new = (t_lem_in*)malloc(sizeof(t_lem_in))))
 		exit(-1);
 	new->map = NULL;
+	new->num_ants = 0;
+	new->num_rooms = 0;
+	new->room = NULL;
 	return (new);
 }
