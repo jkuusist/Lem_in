@@ -25,8 +25,7 @@ int main(/*int argc, char **argv*/)
 	ret = get_next_line(0, &s);
 
 	//FIRST INPUT IS ALWAYS THE NUMBER OF ANTS
-	if (handle_num_ants(s, lem_in) == -1)
-		handle_error(); //TBI
+	handle_num_ants(s);
 
 	free(s);
 
