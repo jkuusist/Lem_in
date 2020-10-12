@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 
-void	handle_room(char *s, t_lem_in *lem_in)
+void	handle_room(char *s, t_lem_in *lem_in, int is_start, int is_end)
 {
 	t_room	*new;
 	char	*s_start;
