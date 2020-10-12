@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   handle_num_ants.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/10 11:39:00 by jkuusist          #+#    #+#             */
-/*   Updated: 2020/09/10 11:58:00 by jkuusist         ###   ########.fr       */
+/*   Created: 2020/10/12 11:11:00 by jkuusist          #+#    #+#             */
+/*   Updated: 2020/10/12 11:11:00 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/lem_in.h"
-#include "libft/libft.h"
-#include <stdlib.h>
-
-int main(/*int argc, char **argv*/)
+int	handle_num_ants(char *s, t_lem_in lem_in)
 {
-	int 	ret;
-	char	*s;
-	t_lem_in *lem_in;
+	int i;
 
-	lem_in = create_lem_in();
-
-	ret = get_next_line(0, &s);
-
-	//FIRST INPUT IS ALWAYS THE NUMBER OF ANTS
-	if (handle_num_ants(s, lem_in) == -1)
-		handle_error(); //TBI
-
-	free(s);
-
-	handle_input(lem_in);
-
-	return (0);	
+	i = 0;
+	while (s[i])
+	{
+		if (!(ft_isdigit(s[i])))
+			return (-1);
+		i++;
+	}
+	lem_in->num_ants = ft_atoi(s);
+	return (0);
 }
