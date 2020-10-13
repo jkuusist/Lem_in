@@ -51,7 +51,7 @@ void	handle_input(t_lem_in *lem_in)
 //				handle_comment();
 		}
 		else if (ft_strchr(s, '-'))
-			handle_link(); //TBI
+			handle_link(s, lem_in);
 		else if (has_digit(s))
 		{
 			handle_room(s, lem_in, is_start, is_end);

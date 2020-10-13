@@ -31,5 +31,7 @@ int main(/*int argc, char **argv*/)
 
 	handle_input(lem_in);
 
+	move_ants(); //TBI
+
 	return (0);	
 }
