@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "includes/lem_in.h"
+#include "libft/libft.h"
+#include <stdlib.h>
+
 void	handle_num_ants(char *s, t_lem_in *lem_in)
 {
 	lem_in->num_ants = ft_atoi_error(s);

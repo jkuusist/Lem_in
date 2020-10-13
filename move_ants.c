@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   move_ants.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/10 11:39:00 by jkuusist          #+#    #+#             */
-/*   Updated: 2020/09/10 11:58:00 by jkuusist         ###   ########.fr       */
+/*   Created: 2020/10/13 11:26:00 by jkuusist          #+#    #+#             */
+/*   Updated: 2020/10/13 11:26:00 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/lem_in.h"
 #include "libft/libft.h"
-#include <stdlib.h>
 
-int main(/*int argc, char **argv*/)
+void	move_ants(t_lem_in *lem_in)
 {
-	int ret;
-	char	*s;
-	t_lem_in *lem_in;
+	//temporary solution
+	//full functionality TBI
 
-	lem_in = create_lem_in();
-
-	ret = get_next_line(0, &s);
-
-	if (ret == -1)
-		return (-1);
-
-	//FIRST INPUT IS ALWAYS THE NUMBER OF ANTS
-	handle_num_ants(s, lem_in);
-
-	free(s);
-
-	handle_input(lem_in);
-
-	move_ants(lem_in); //TBI
-
-	return (0);	
+	int i = 0;
+	while (i < lem_in->num_ants)
+	{
+		ft_printf("moving ant #%d\n", i);
+		i++;
+	}
 }

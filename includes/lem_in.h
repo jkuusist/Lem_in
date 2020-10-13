@@ -43,13 +43,20 @@ typedef struct	s_link
 {
 	struct s_room	room_one;
 	struct s_room	room_two;
-	struct s_link	next;
+	struct s_link	*next;
 	
 }				t_link;
 
 t_lem_in	*create_lem_in(void);
 void		destroy_lem_in(t_lem_in *lem_in);
-int			handle_input(char *s);
+void		handle_input(t_lem_in *lem_in);
 void		handle_num_ants(char *s, t_lem_in *lem_in);
+t_map		*create_map_link(char *s, int line_num);
+long long	ft_atoi_error(const char *str);
+void		handle_error();
+void		handle_link(char *s, t_lem_in *lem_in);
+void		handle_room(char *s, t_lem_in *lem_in, int is_start, int is_end);
+int			has_digit(char *s);
+void		move_ants(t_lem_in *lem_in);
 
 #endif

@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "includes/lem_in.h"
+#include "libft/libft.h"
 #include <stdlib.h>
 
 void	handle_room(char *s, t_lem_in *lem_in, int is_start, int is_end)
@@ -20,7 +22,7 @@ void	handle_room(char *s, t_lem_in *lem_in, int is_start, int is_end)
 
 	s_start = s;
 	temp = lem_in->room;
-	if !(new = (t_room*)malloc(sizeof(t_room)))
+	if (!(new = (t_room*)malloc(sizeof(t_room))))
 		exit (-1);
 	if ((s[0] == 'L') || (s[0] == '#'))
 		handle_error(); //TBI

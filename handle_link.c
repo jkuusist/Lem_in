@@ -10,9 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "includes/lem_in.h"
+#include "libft/libft.h"
+#include <stdlib.h>
+
 void	handle_link(char *s, t_lem_in *lem_in)
 {
-	t_lin	*new;
+	t_link	*new;
 	char 	**rooms;
 	t_room	*temp;
 	t_link	*link_temp;

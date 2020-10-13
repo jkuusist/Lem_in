@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "includes/lem_in.h"
+
 static int	is_whitespace(char c)
 {
 	if ((c == ' ') || (c == '\t'))
@@ -20,7 +22,7 @@ static int	is_whitespace(char c)
 		return (0);
 }
 
-long long	ft_atoi_atoi(const char *str)
+long long	ft_atoi_error(const char *str)
 {
 	int					i;
 	unsigned long long	res;

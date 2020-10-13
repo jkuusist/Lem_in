@@ -10,11 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
+
 int		has_digit(char *s)
 {
 	while (*s)
 	{
-		if (if is_digit(*s))
+		if (ft_isdigit(*s))
 			return (1);
 		s++;
 	}

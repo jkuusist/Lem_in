@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "includes/lem_in.h"
 #include <stdlib.h>
 
 void	destroy_lem_in(t_lem_in *lem_in)
