@@ -41,8 +41,8 @@ typedef struct	s_room
 
 typedef struct	s_link
 {
-	struct s_room	room_one;
-	struct s_room	room_two;
+	struct s_room	*room_one;
+	struct s_room	*room_two;
 	struct s_link	*next;
 	
 }				t_link;

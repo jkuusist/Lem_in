@@ -22,6 +22,8 @@ void	handle_link(char *s, t_lem_in *lem_in)
 	t_link	*link_temp;
 	int		is_found;	
 
+	if (!(new = (t_link*)malloc(sizeof(t_link))))
+		exit(-1);
 	rooms = ft_strsplit(s, '-');
 	temp = lem_in->room;
 	link_temp = lem_in->link;

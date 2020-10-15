@@ -16,7 +16,7 @@ HEDR =
 
 LIBFT = ./libft
 
-SRCS = create_lem_in.c destroy_lem_in.c ft_atoi_error.c handle_error.c handle_input.c handle_link.c handle_room.c has_digit.c main.c move_ants.c
+SRCS = create_lem_in.c create_map_link.c destroy_lem_in.c ft_atoi_error.c handle_error.c handle_input.c handle_link.c handle_room.c has_digit.c main.c move_ants.c
 
 OBJS = $(SRCS:.c=.o)
 FLAGS = -Wall -Werror -Wextra

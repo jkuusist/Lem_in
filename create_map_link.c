@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "includes/lem_in.h"
+#include <stdlib.h>
+
 t_map *create_map_link(char *s, int line_num)
 {
 	t_map *new;
@@ -19,4 +22,5 @@ t_map *create_map_link(char *s, int line_num)
 	new->line = s;
 	new->line_num = line_num;
 	new->next = NULL;
+	return (new);
 }
