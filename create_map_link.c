@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "includes/lem_in.h"
+#include "libft/libft.h"
 #include <stdlib.h>
 
 t_map *create_map_link(char *s, int line_num)
@@ -19,7 +20,7 @@ t_map *create_map_link(char *s, int line_num)
 
 	if (!(new = (t_map*)malloc(sizeof(t_map))))
 		exit(-1);
-	new->line = s;
+	new->line = ft_strdup(s);
 	new->line_num = line_num;
 	new->next = NULL;
 	return (new);

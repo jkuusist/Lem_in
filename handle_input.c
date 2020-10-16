@@ -18,7 +18,7 @@ void	handle_num_ants(char *s, t_lem_in *lem_in)
 {
 	lem_in->num_ants = ft_atoi_error(s);
 	lem_in->map = create_map_link(s, 0);
-	lem_in->map = lem_in->map->next;
+//	lem_in->map = lem_in->map->next;
 }
 
 void	handle_input(t_lem_in *lem_in)
@@ -36,8 +36,8 @@ void	handle_input(t_lem_in *lem_in)
 	while (ret == 1)
 	{
 		ret = get_next_line(0, &s);
-		lem_in->map = create_map_link(s, line_num);
-		lem_in->map = lem_in->map->next;
+		(lem_in->map)->next = create_map_link(s, line_num);
+//		lem_in->map = lem_in->map->next;
 	
 		if (s[0] == '#')
 		{
@@ -62,7 +62,6 @@ void	handle_input(t_lem_in *lem_in)
 			is_start = 0;
 			is_end = 0;
 		}
-
 
 		free(s);
 	}

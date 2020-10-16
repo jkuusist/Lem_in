@@ -36,5 +36,6 @@ int main(/*int argc, char **argv*/)
 
 	move_ants(lem_in); //TBI
 
+	destroy_lem_in(lem_in);
 	return (0);	
 }

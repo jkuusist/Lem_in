@@ -24,4 +24,6 @@ void	move_ants(t_lem_in *lem_in)
 		ft_printf("moving ant #%d\n", i);
 		i++;
 	}
+
+//	ft_printf("got to end of move_ants\n");
 }
