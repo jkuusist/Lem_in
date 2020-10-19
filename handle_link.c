@@ -66,5 +66,8 @@ void	handle_link(char *s, t_lem_in *lem_in)
 		link_temp->next = new;
 	}
 	
+	free(rooms[0]);
+	free(rooms[1]);
+	free(rooms[2]);
 	free(rooms);
 }
