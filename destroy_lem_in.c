@@ -16,26 +16,29 @@
 
 static void	destroy_maps(t_map *map)
 {
-	ft_printf("got to start of destroy_maps. map is %p\n", map);
+//	ft_printf("got to start of destroy_maps. map is %p\n", map);
 
 	t_map *next;
 
-	ft_printf("in destroy_map. current line is: %s\n", map->line);
+//	ft_printf("in destroy_map. current line is: %s\n", map->line);
 
 	next = map->next;
 	if (map->line)
 		free(map->line);
 
-	ft_printf("1111\n");
+//	ft_printf("1111 map is %p\n", map);
 
-	free(map);
+//	free(map);
+
+//	ft_printf("2222\n");
+
 	if (next)
 		destroy_maps(next);
 }
 
 static void	destroy_rooms(t_room *room)
 {
-	ft_printf("got to start of destroy_rooms. room is %p\n", room);
+//	ft_printf("got to start of destroy_rooms. room is %p\n", room);
 
 	t_room *next;
 
@@ -48,7 +51,7 @@ static void	destroy_rooms(t_room *room)
 
 static void	destroy_links(t_link *link)
 {
-	ft_printf("got to start of destroy_links. link is %p\n", link);
+//	ft_printf("got to start of destroy_links. link is %p\n", link);
 
 	t_link *next;
 
@@ -60,12 +63,12 @@ static void	destroy_links(t_link *link)
 
 void	destroy_lem_in(t_lem_in *lem_in)
 {
-	ft_printf("got to start of destroy\n");
+//	ft_printf("got to start of destroy\n");
 
 	destroy_maps(lem_in->map);
 	destroy_rooms(lem_in->room);
 	destroy_links(lem_in->link);
 	free(lem_in);
 
-	ft_printf("got to end of destroy\n");
+//	ft_printf("got to end of destroy\n");
 }

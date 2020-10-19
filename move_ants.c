@@ -18,12 +18,24 @@ void	move_ants(t_lem_in *lem_in)
 	//temporary solution
 	//full functionality TBI
 
-	int i = 0;
+//	int i = 0;
+
+	t_room *temp;
+
+	temp = lem_in->room;
+
+	while (temp)
+	{
+		ft_printf("in room %s. temp is %p\n", temp->name, temp);
+
+		temp = temp->next;
+	}
+/*
 	while (i < lem_in->num_ants)
 	{
 		ft_printf("moving ant #%d\n", i);
 		i++;
 	}
-
+*/
 //	ft_printf("got to end of move_ants\n");
 }

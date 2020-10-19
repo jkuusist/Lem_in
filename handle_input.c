@@ -35,9 +35,11 @@ void	handle_input(t_lem_in *lem_in)
 	is_end = 0;
 	while (ret == 1)
 	{
+//		ft_printf("in input loop. lem_in->room is %p\n", lem_in->room);
+
 		ret = get_next_line(0, &s);
 		(lem_in->map)->next = create_map_link(s, line_num);
-//		lem_in->map = lem_in->map->next;
+		lem_in->map = lem_in->map->next;
 	
 		if (s[0] == '#')
 		{
