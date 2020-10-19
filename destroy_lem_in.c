@@ -28,7 +28,7 @@ static void	destroy_maps(t_map *map)
 
 //	ft_printf("1111 map is %p\n", map);
 
-//	free(map);
+	free(map);
 
 //	ft_printf("2222\n");
 
@@ -65,7 +65,7 @@ void	destroy_lem_in(t_lem_in *lem_in)
 {
 //	ft_printf("got to start of destroy\n");
 
-	destroy_maps(lem_in->map);
+	destroy_maps(lem_in->map_start);
 	destroy_rooms(lem_in->room);
 	destroy_links(lem_in->link);
 	free(lem_in);

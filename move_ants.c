@@ -20,9 +20,20 @@ void	move_ants(t_lem_in *lem_in)
 
 //	int i = 0;
 
+	t_map *map_temp;
 	t_room *temp;
+//	t_link *link_temp;
 
+	map_temp = lem_in->map_start;
 	temp = lem_in->room;
+//	link_temp = lem_in->link;
+
+	while (map_temp)
+	{
+		ft_printf("%s\n", map_temp->line);
+
+		map_temp = map_temp->next;
+	}
 
 	while (temp)
 	{
@@ -30,6 +41,18 @@ void	move_ants(t_lem_in *lem_in)
 
 		temp = temp->next;
 	}
+
+/*
+	while (link_temp)
+	{
+		ft_printf("in link %s-%s. link_temp is %p\n", (link_temp->room_one)->name, 
+		(link_temp->room_two)->name, link_temp);
+
+		ft_printf("room_one is %p. room_two is %p\n", link_temp->room_one, link_temp->room_two);
+
+		link_temp = link_temp->next;
+	}
+*/
 /*
 	while (i < lem_in->num_ants)
 	{

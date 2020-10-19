@@ -16,6 +16,7 @@
 typedef struct	s_lem_in
 {
 	struct s_map	*map;
+	struct s_map	*map_start;
 	int				num_ants;
 	int				num_rooms;
 	struct s_room	*room;
