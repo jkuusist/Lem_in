@@ -11,11 +11,14 @@
 /* ************************************************************************** */
 
 #include "libft/libft.h"
+#include <stdlib.h>
 
 void handle_error(/*int err_num*/)
 {
 	//temporary solution
 	//full functionality TBI
 
-	ft_printf("error\n");
+	ft_printf("Error\n");
+
+	exit(-1);
 }

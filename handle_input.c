@@ -53,14 +53,21 @@ void	handle_input(t_lem_in *lem_in)
 			if (s[1] == '#')
 			{
 				if (!(ft_strcmp("##start", s)))
+				{
+					if (lem_in->start)
+						handle_error(); //TBI
 					is_start = 1;
+				}
 				else if (!(ft_strcmp("##end", s)))
+				{
+					if (lem_in->end)
+						handle_error(); //TBI
 					is_end = 1;
+				}
 				else
 				{
 					free(s);
 					continue;
-					//handle_error(); //TBI
 				}
 			}
 			else

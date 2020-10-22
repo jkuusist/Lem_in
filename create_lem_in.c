@@ -23,5 +23,7 @@ t_lem_in	*create_lem_in(void)
 	new->num_ants = 0;
 	new->num_rooms = 0;
 	new->room = NULL;
+	new->start = NULL;
+	new->end = NULL;
 	return (new);
 }

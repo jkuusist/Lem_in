@@ -21,6 +21,8 @@ typedef struct	s_lem_in
 	int				num_rooms;
 	struct s_room	*room;
 	struct s_link	*link;
+	struct s_room	*start;
+	struct s_room	*end;
 }				t_lem_in;
 
 typedef struct	s_map

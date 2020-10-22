@@ -39,9 +39,15 @@ void	handle_room(char *s, t_lem_in *lem_in, int is_start, int is_end)
 	new->name = ft_strndup(s_start, (s - s_start));
 	new->next = NULL;
 	if (is_start)
+	{
+		lem_in->start = new;
 		new->is_start = 1;
+	}
 	else if (is_end)
+	{
+		lem_in->end = new;
 		new->is_end = 1;
+	}
 	if (!(lem_in->room))
 		lem_in->room = new;
 	else
