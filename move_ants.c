@@ -30,7 +30,8 @@ void	move_ants(t_lem_in *lem_in)
 
 	while (map_temp)
 	{
-		ft_printf("%s\n", map_temp->line);
+		if (map_temp->line)
+			ft_printf("%s\n", map_temp->line);
 
 		map_temp = map_temp->next;
 	}

@@ -39,8 +39,14 @@ void	handle_input(t_lem_in *lem_in)
 //		ft_printf("in input loop. lem_in->room is %p\n", lem_in->room);
 
 		ret = get_next_line(0, &s);
+
+		if (ret == 1)
+		{
 		(lem_in->map)->next = create_map_link(s, line_num);
 		lem_in->map = lem_in->map->next;
+
+//		ft_printf("in handle_input. lem_in->map is now %s\n", (lem_in->map)->line);
+//		ft_printf("in handle_input. lem_in->map->next is now %s\n", ((lem_in->map)->next)->line);
 	
 		if (s[0] == '#')
 		{
@@ -65,7 +71,8 @@ void	handle_input(t_lem_in *lem_in)
 			is_start = 0;
 			is_end = 0;
 		}
-
+		
 		free(s);
+		}
 	}
 }
