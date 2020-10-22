@@ -57,11 +57,17 @@ void	handle_input(t_lem_in *lem_in)
 				else if (!(ft_strcmp("##end", s)))
 					is_end = 1;
 				else
-					handle_error(); //TBI
+				{
+					free(s);
+					continue;
+					//handle_error(); //TBI
+				}
 			}
 			else
+			{
+				free(s);
 				continue;
-//				handle_comment();
+			}
 		}
 		else if (ft_strchr(s, '-'))
 			handle_link(s, lem_in);

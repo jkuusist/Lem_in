@@ -15,11 +15,6 @@
 
 void	move_ants(t_lem_in *lem_in)
 {
-	//temporary solution
-	//full functionality TBI
-
-//	int i = 0;
-
 	t_map *map_temp;
 	t_room *temp;
 //	t_link *link_temp;
@@ -54,12 +49,4 @@ void	move_ants(t_lem_in *lem_in)
 		link_temp = link_temp->next;
 	}
 */
-/*
-	while (i < lem_in->num_ants)
-	{
-		ft_printf("moving ant #%d\n", i);
-		i++;
-	}
-*/
-//	ft_printf("got to end of move_ants\n");
 }
