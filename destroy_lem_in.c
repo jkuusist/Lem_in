@@ -14,6 +14,16 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 
+static void destroy_ants(t_ant* ant)
+{
+	t_ant *next;
+
+	next = ant->next;
+	free(ant);
+	if (next)
+		destroy_ants(next);
+}
+
 static void	destroy_maps(t_map *map)
 {
 //	ft_printf("got to start of destroy_maps. map is %p\n", map);
@@ -64,7 +74,7 @@ static void	destroy_links(t_link *link)
 void	destroy_lem_in(t_lem_in *lem_in)
 {
 //	ft_printf("got to start of destroy\n");
-
+	destroy_ants(lem_in->ant);
 	destroy_maps(lem_in->map_start);
 	destroy_rooms(lem_in->room);
 	destroy_links(lem_in->link);

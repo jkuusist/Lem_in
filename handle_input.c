@@ -16,7 +16,26 @@
 
 void	handle_num_ants(char *s, t_lem_in *lem_in)
 {
-	lem_in->num_ants = ft_atoi_error(s);
+//	lem_in->num_ants = ft_atoi_error(s);
+
+	int		num_ants;
+	int		i;
+	t_ant	*temp;
+
+	num_ants = ft_atoi_error(s);
+	i = 1;
+	
+	lem_in->ant = create_ant(i);
+	temp = lem_in->ant;
+	i++;
+
+	while (i <= num_ants)
+	{
+		temp->next = create_ant(i);
+		temp = temp->next;
+		i++;
+	}
+
 	lem_in->map = create_map_link(s, 0);
 	lem_in->map_start = lem_in->map;
 //	lem_in->map = lem_in->map->next;

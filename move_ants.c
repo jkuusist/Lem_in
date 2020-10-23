@@ -15,13 +15,22 @@
 
 void	move_ants(t_lem_in *lem_in)
 {
+	t_ant *ant_temp;
 	t_map *map_temp;
 	t_room *temp;
 //	t_link *link_temp;
 
+	ant_temp = lem_in->ant;
 	map_temp = lem_in->map_start;
 	temp = lem_in->room;
 //	link_temp = lem_in->link;
+
+	while (ant_temp)
+	{
+		ft_printf("in ant number %d\n", ant_temp->num);
+
+		ant_temp = ant_temp->next;
+	}
 
 	while (map_temp)
 	{

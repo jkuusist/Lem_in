@@ -17,12 +17,12 @@ typedef struct	s_lem_in
 {
 	struct s_map	*map;
 	struct s_map	*map_start;
-	int				num_ants;
 	int				num_rooms;
 	struct s_room	*room;
 	struct s_link	*link;
 	struct s_room	*start;
 	struct s_room	*end;
+	struct s_ant	*ant;
 }				t_lem_in;
 
 typedef struct	s_map
@@ -50,6 +50,12 @@ typedef struct	s_link
 	
 }				t_link;
 
+typedef struct	s_ant
+{
+	int				num;
+	struct s_ant	*next;
+}				t_ant;
+
 t_lem_in	*create_lem_in(void);
 void		destroy_lem_in(t_lem_in *lem_in);
 void		handle_input(t_lem_in *lem_in);
@@ -61,5 +67,6 @@ void		handle_link(char *s, t_lem_in *lem_in);
 void		handle_room(char *s, t_lem_in *lem_in, int is_start, int is_end);
 int			has_digit(char *s);
 void		move_ants(t_lem_in *lem_in);
+t_ant		*create_ant(int num);
 
 #endif
