@@ -34,12 +34,13 @@ typedef struct	s_map
 
 typedef struct	s_room
 {
-	char			*name;
-	int				x_coord;
-	int				y_coord;
-	int				is_start;
-	int				is_end;
-	struct s_room	*next;
+	char				*name;
+	int					x_coord;
+	int					y_coord;
+	int					is_start;
+	int					is_end;
+	struct s_connection	*connection;
+	struct s_room		*next;
 }				t_room;
 
 typedef struct	s_link
@@ -56,6 +57,12 @@ typedef struct	s_ant
 	struct s_ant	*next;
 }				t_ant;
 
+typedef struct	s_connection
+{
+	t_room 				*to_room;
+	struct s_connection	*next;
+}				t_connection;
+
 t_lem_in	*create_lem_in(void);
 void		destroy_lem_in(t_lem_in *lem_in);
 void		handle_input(t_lem_in *lem_in);
@@ -68,5 +75,6 @@ void		handle_room(char *s, t_lem_in *lem_in, int is_start, int is_end);
 int			has_digit(char *s);
 void		move_ants(t_lem_in *lem_in);
 t_ant		*create_ant(int num);
+void		make_connections(t_lem_in *lem_in);
 
 #endif

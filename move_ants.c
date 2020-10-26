@@ -18,6 +18,8 @@ void	move_ants(t_lem_in *lem_in)
 	t_ant *ant_temp;
 	t_map *map_temp;
 	t_room *temp;
+	t_connection *conn_temp;
+
 //	t_link *link_temp;
 
 	ant_temp = lem_in->ant;
@@ -43,6 +45,13 @@ void	move_ants(t_lem_in *lem_in)
 	while (temp)
 	{
 		ft_printf("in room %s. temp is %p\n", temp->name, temp);
+
+		conn_temp = temp->connection;
+		while (conn_temp)
+		{
+			ft_printf("   Connected to: %s\n", (conn_temp->to_room)->name);
+			conn_temp = conn_temp->next;
+		}
 
 		temp = temp->next;
 	}

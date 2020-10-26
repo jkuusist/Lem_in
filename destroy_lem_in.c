@@ -50,10 +50,21 @@ static void	destroy_rooms(t_room *room)
 {
 //	ft_printf("got to start of destroy_rooms. room is %p\n", room);
 
-	t_room *next;
+	t_room			*next;
+	t_connection	*temp;
 
 	next = room->next;
 	free(room->name);
+
+	while (room->connection)
+	{
+//		if (temp)
+//			ft_printf("in connection free-er. temp->to_room is %s\n", temp->to_room);
+		temp = room->connection;
+		room->connection = (room->connection)->next;
+		if (temp)
+			free(temp);
+	}
 	free(room);
 	if (next)
 		destroy_rooms(next);

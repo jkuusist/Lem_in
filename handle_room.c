@@ -37,6 +37,9 @@ void	handle_room(char *s, t_lem_in *lem_in, int is_start, int is_end)
 		s--;
 	new->x_coord = ft_atoi(s);
 	new->name = ft_strndup(s_start, (s - s_start));
+	new->is_start = 0;
+	new->is_end = 0;
+	new->connection = NULL;
 	new->next = NULL;
 	if (is_start)
 	{
