@@ -18,7 +18,8 @@ void	make_connections(t_lem_in *lem_in)
 	t_link *temp;
 	t_room *from;
 	t_room *to;
-	t_connection *new;
+	t_connection *new_one;
+	t_connection *new_two;
 
 	temp = lem_in->link;
 	while (temp)
@@ -27,16 +28,31 @@ void	make_connections(t_lem_in *lem_in)
 		to = temp->room_two;
 	
 	
-		if (!(new = (t_connection*)malloc(sizeof(t_connection))))
+		if (!(new_one = (t_connection*)malloc(sizeof(t_connection))))
 			exit(-1);
-		new->to_room = to;
-		new->next = NULL;
+		new_one->to_room = to;
+		new_one->next = NULL;
 
 		if (!from->connection)
-			from->connection = new;
+			from->connection = new_one;
 		else
-			(from->connection)->next = new;
+		{
+			new_one->next = from->connection;
+			from->connection = new_one;
+		}
 
+		if (!(new_two = (t_connection*)malloc(sizeof(t_connection))))
+			exit(-1);
+		new_two->to_room = from;
+		new_two->next = NULL;
+
+		if (!to->connection)
+			to->connection = new_two;
+		else
+		{
+			new_two->next = to->connection;
+			to->connection = new_two;
+		}
 		temp = temp->next;
 	}
 }
