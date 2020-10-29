@@ -1,45 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   find_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/10 11:39:00 by jkuusist          #+#    #+#             */
-/*   Updated: 2020/09/10 11:58:00 by jkuusist         ###   ########.fr       */
+/*   Created: 2020/10/29 10:16:00 by jkuusist          #+#    #+#             */
+/*   Updated: 2020/10/29 10:16:00 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/lem_in.h"
 #include "libft/libft.h"
-#include <stdlib.h>
 
-int main(/*int argc, char **argv*/)
+void	find_path(t_lem_in *lem_in)
 {
-	int ret;
-	char	*s;
-	t_lem_in *lem_in;
+	t_room *temp;
+	t_connection *path;
 
-	lem_in = create_lem_in();
+	temp = lem_in->start;
+	
+	while (temp)
+	{
+		temp->has_ant = 1;
+		path = temp->connection;
 
-	ret = get_next_line(0, &s);
-
-	if (ret == -1)
-		return (-1);
-
-	//FIRST INPUT IS ALWAYS THE NUMBER OF ANTS
-	handle_num_ants(s, lem_in);
-
-	free(s);
-
-	handle_input(lem_in);
-
-	make_connections(lem_in);
-
-	find_path(lem_in);
-
-	move_ants(lem_in); //TBI
-
-	destroy_lem_in(lem_in);
-	return (0);	
+		while (path)
+		{
+			if (path->to_room == lem_in->end)
+			{
+				ft_printf("found path to end from %s\n", temp->name);
+//				return ;
+			}
+			path = path->next;
+		}
+		temp = temp->next;
+	}
 }

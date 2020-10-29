@@ -49,7 +49,7 @@ void	move_ants(t_lem_in *lem_in)
 		conn_temp = temp->connection;
 		while (conn_temp)
 		{
-			ft_printf("   Connected to: %s\n", (conn_temp->to_room)->name);
+			ft_printf("   Connected to: %s (%p)\n", (conn_temp->to_room)->name, conn_temp->to_room);
 			conn_temp = conn_temp->next;
 		}
 

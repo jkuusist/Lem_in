@@ -39,6 +39,7 @@ typedef struct	s_room
 	int					y_coord;
 	int					is_start;
 	int					is_end;
+	int					has_ant;
 	struct s_connection	*connection;
 	struct s_room		*next;
 }				t_room;
@@ -76,5 +77,6 @@ int			has_digit(char *s);
 void		move_ants(t_lem_in *lem_in);
 t_ant		*create_ant(int num);
 void		make_connections(t_lem_in *lem_in);
+void		find_path(t_lem_in *lem_in);
 
 #endif
