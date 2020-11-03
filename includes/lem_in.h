@@ -15,14 +15,15 @@
 
 typedef struct	s_lem_in
 {
-	struct s_map	*map;
-	struct s_map	*map_start;
-	int				num_rooms;
-	struct s_room	*room;
-	struct s_link	*link;
-	struct s_room	*start;
-	struct s_room	*end;
-	struct s_ant	*ant;
+	struct s_map		*map;
+	struct s_map		*map_start;
+	int					num_rooms;
+	struct s_room		*room;
+	struct s_link		*link;
+	struct s_room		*start;
+	struct s_room		*end;
+	struct s_ant		*ant;
+	struct s_room		*path;
 }				t_lem_in;
 
 typedef struct	s_map
@@ -42,6 +43,7 @@ typedef struct	s_room
 	int					has_ant;
 	struct s_connection	*connection;
 	struct s_room		*next;
+	struct s_room		*path_next;
 }				t_room;
 
 typedef struct	s_link

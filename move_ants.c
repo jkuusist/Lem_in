@@ -15,6 +15,19 @@
 
 void	move_ants(t_lem_in *lem_in)
 {
+	t_room *path_temp;
+
+	path_temp = lem_in->path;
+
+	ft_printf("PATH:\n");
+	while (path_temp)
+	{
+		ft_printf("%s\n", path_temp->name);
+		path_temp = path_temp->path_next;
+	}
+
+
+/*
 	t_ant *ant_temp;
 	t_map *map_temp;
 	t_room *temp;
@@ -26,7 +39,8 @@ void	move_ants(t_lem_in *lem_in)
 	map_temp = lem_in->map_start;
 	temp = lem_in->room;
 //	link_temp = lem_in->link;
-
+*/
+/*
 	while (ant_temp)
 	{
 		ft_printf("in ant number %d\n", ant_temp->num);
@@ -55,7 +69,7 @@ void	move_ants(t_lem_in *lem_in)
 
 		temp = temp->next;
 	}
-
+*/
 /*
 	while (link_temp)
 	{

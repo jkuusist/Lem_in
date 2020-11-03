@@ -25,5 +25,6 @@ t_lem_in	*create_lem_in(void)
 	new->start = NULL;
 	new->end = NULL;
 	new->ant = NULL;
+	new->path = NULL;
 	return (new);
 }
