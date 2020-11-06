@@ -17,14 +17,16 @@ void	move_ants(t_lem_in *lem_in)
 {
 	t_room *path_temp;
 
-	path_temp = lem_in->path;
+	path_temp = lem_in->start;
 
-	ft_printf("PATH:\n");
+	ft_printf("---PATH---\n");
+
 	while (path_temp)
 	{
-		ft_printf("%s\n", path_temp->name);
+		ft_printf("currently in: %s at: %p\n", path_temp->name, path_temp);
 		path_temp = path_temp->path_next;
 	}
+	ft_printf("after while loop. path_temp is now %p\n", path_temp);
 
 
 /*

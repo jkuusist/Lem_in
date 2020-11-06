@@ -42,6 +42,8 @@ void	handle_room(char *s, t_lem_in *lem_in, int is_start, int is_end)
 	new->has_ant = 0;
 	new->connection = NULL;
 	new->next = NULL;
+	new->path_next = NULL;
+	new->path_previous = NULL;
 	if (is_start)
 	{
 		lem_in->start = new;

@@ -44,6 +44,7 @@ typedef struct	s_room
 	struct s_connection	*connection;
 	struct s_room		*next;
 	struct s_room		*path_next;
+	struct s_room		*path_previous;
 }				t_room;
 
 typedef struct	s_link
