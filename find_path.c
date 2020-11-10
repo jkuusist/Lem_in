@@ -62,8 +62,20 @@ static int		check_paths(t_lem_in *lem_in, t_room **rooms, t_room **new, int room
 			room_count++;
 			if (path->to_room == lem_in->end)
 			{
+				ft_printf("in if loop\n");
+
 				(*temp)->path_next = lem_in->end;
 				(lem_in->end)->path_previous = *temp;
+
+				lem_in->path = *temp;
+
+//				ft_printf("lem_in->end->path_previous is %s\n", ((lem_in->end)->path_previous)->name);
+/*				while ((lem_in->end)->path_previous)
+				{
+					ft_printf("path_previous is %s\n", ((lem_in->end)->path_previous)->name);
+					(lem_in->end)->path_previous = ((lem_in->end)->path_previous)->path_previous;
+				}
+*/
 				return (1);
 			}
 			path = path->next;

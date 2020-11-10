@@ -17,7 +17,7 @@ void	move_ants(t_lem_in *lem_in)
 {
 	t_room *path_temp;
 
-	path_temp = lem_in->start;
+	path_temp = lem_in->path;
 
 	ft_printf("---PATH---\n");
 
