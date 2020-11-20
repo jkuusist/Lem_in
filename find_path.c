@@ -16,20 +16,19 @@
 
 static t_room	**create_room_array(t_room **rooms, int room_count)
 {
-	ft_printf("in create_room_array\n");
-
 	t_room			**temp;
 	t_room			**new;
 	t_connection	*path;
 	int				i;
 
 	i = 0;
-	if (!(new = malloc(sizeof(t_room*) * (room_count + 1))))
+	if (!(new = (t_room**)malloc(sizeof(t_room**) * (room_count + 1))))
 		exit(-1);
 	temp = rooms;
 	while (*temp)
 	{
 		path = (*temp)->connection;
+
 		while (path)
 		{
 			if (!((path->to_room)->has_ant))
@@ -42,13 +41,12 @@ static t_room	**create_room_array(t_room **rooms, int room_count)
 		temp++;
 	}
 	new[i] = NULL;
+
 	return (new);
 }
 
 static int		check_paths(t_lem_in *lem_in, t_room **rooms, t_room **new, int room_count)
 {
-	ft_printf("in check_paths. lem_in->path is now %p\n", lem_in->path);
-
 	t_room			**temp;
 	t_connection	*path;
 
@@ -62,27 +60,16 @@ static int		check_paths(t_lem_in *lem_in, t_room **rooms, t_room **new, int room
 			room_count++;
 			if (path->to_room == lem_in->end)
 			{
-				ft_printf("in if loop\n");
-
 				(*temp)->path_next = lem_in->end;
 				(lem_in->end)->path_previous = *temp;
-
 				lem_in->path = *temp;
-
-//				ft_printf("lem_in->end->path_previous is %s\n", ((lem_in->end)->path_previous)->name);
-/*				while ((lem_in->end)->path_previous)
-				{
-					ft_printf("path_previous is %s\n", ((lem_in->end)->path_previous)->name);
-					(lem_in->end)->path_previous = ((lem_in->end)->path_previous)->path_previous;
-				}
-*/
 				return (1);
 			}
 			path = path->next;
 		}
 		temp++;
 	}
-	if ((room_count == 0) || !(new = create_room_array(rooms, room_count)) || !(check_paths(lem_in, new, NULL, 0)))
+	if (!room_count || !(new = (create_room_array(rooms, room_count))) || !(check_paths(lem_in, new, NULL, 0)))
 	{
 		free(new);
 		return(0);
@@ -91,6 +78,9 @@ static int		check_paths(t_lem_in *lem_in, t_room **rooms, t_room **new, int room
 	while (*temp)
 	{
 		path = (*temp)->connection;
+
+		ft_printf("*temp is %s\n", (*temp)->name);
+
 		while (path)
 		{
 			if ((path->to_room == lem_in->path) && (path->to_room != *temp))

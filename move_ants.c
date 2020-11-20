@@ -29,6 +29,16 @@ void	move_ants(t_lem_in *lem_in)
 	ft_printf("after while loop. path_temp is now %p\n", path_temp);
 
 
+	t_room *prev_temp = (lem_in->end)->path_previous;
+
+	ft_printf("\n---PATH_PREVIOUS---\n");
+
+	while (prev_temp)
+	{
+		ft_printf("current previous is %s\n", prev_temp->name);
+		prev_temp = prev_temp->path_previous;
+	}
+
 /*
 	t_ant *ant_temp;
 	t_map *map_temp;
