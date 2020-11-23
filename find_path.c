@@ -79,7 +79,7 @@ static int		check_paths(t_lem_in *lem_in, t_room **rooms, t_room **new, int room
 	{
 		path = (*temp)->connection;
 
-		ft_printf("*temp is %s\n", (*temp)->name);
+//		ft_printf("*temp is %s\n", (*temp)->name);
 
 		while (path)
 		{

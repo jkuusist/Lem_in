@@ -15,82 +15,36 @@
 
 void	move_ants(t_lem_in *lem_in)
 {
-	t_room *path_temp;
-
-	path_temp = lem_in->path;
-
-	ft_printf("---PATH---\n");
-
-	while (path_temp)
-	{
-		ft_printf("currently in: %s at: %p\n", path_temp->name, path_temp);
-		path_temp = path_temp->path_next;
-	}
-	ft_printf("after while loop. path_temp is now %p\n", path_temp);
-
-
-	t_room *prev_temp = (lem_in->end)->path_previous;
-
-	ft_printf("\n---PATH_PREVIOUS---\n");
-
-	while (prev_temp)
-	{
-		ft_printf("current previous is %s\n", prev_temp->name);
-		prev_temp = prev_temp->path_previous;
-	}
-
-/*
-	t_ant *ant_temp;
-	t_map *map_temp;
 	t_room *temp;
-	t_connection *conn_temp;
 
-//	t_link *link_temp;
+	(lem_in->start)->ant = lem_in->ant;
 
-	ant_temp = lem_in->ant;
-	map_temp = lem_in->map_start;
-	temp = lem_in->room;
-//	link_temp = lem_in->link;
-*/
-/*
-	while (ant_temp)
+	while (1)
 	{
-		ft_printf("in ant number %d\n", ant_temp->num);
+		temp = lem_in->end;
 
-		ant_temp = ant_temp->next;
-	}
+//		ft_printf("temp is %p\n", temp);
+//		ft_printf("temp->ant is %p\n", temp->ant);
+//		ft_printf("temp->ant is %p. temp->ant->next is %p\n", temp->ant, (temp->ant)->next);
+//		return ;
 
-	while (map_temp)
-	{
-		if (map_temp->line)
-			ft_printf("%s\n", map_temp->line);
-
-		map_temp = map_temp->next;
-	}
-
-	while (temp)
-	{
-		ft_printf("in room %s. temp is %p\n", temp->name, temp);
-
-		conn_temp = temp->connection;
-		while (conn_temp)
+		if (temp->ant && !(temp->ant->next))
+			return ;
+		while (temp)
 		{
-			ft_printf("   Connected to: %s (%p)\n", (conn_temp->to_room)->name, conn_temp->to_room);
-			conn_temp = conn_temp->next;
+			if (temp->path_previous && (temp->path_previous)->ant && !(temp->ant))
+			{
+				temp->ant = (temp->path_previous)->ant;
+				ft_printf("L%d-%s ", (temp->ant)->num, temp->name);
+			}
+			else if (temp->ant)
+			{
+				temp->ant = (temp->ant)->next;
+				if ((temp != lem_in->start) && temp->ant)
+					ft_printf("L%d-%s ", (temp->ant)->num, temp->name);
+			}
+			temp = temp->path_previous;
 		}
-
-		temp = temp->next;
+		ft_printf("\n");
 	}
-*/
-/*
-	while (link_temp)
-	{
-		ft_printf("in link %s-%s. link_temp is %p\n", (link_temp->room_one)->name, 
-		(link_temp->room_two)->name, link_temp);
-
-		ft_printf("room_one is %p. room_two is %p\n", link_temp->room_one, link_temp->room_two);
-
-		link_temp = link_temp->next;
-	}
-*/
 }
