@@ -14,40 +14,6 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 
-void	handle_num_ants(char *s, t_lem_in *lem_in)
-{
-	int		num_ants;
-	int		i;
-	t_ant	*temp;
-
-	num_ants = ft_atoi_error(s);
-	i = 1;
-	
-//	lem_in->ant = create_ant(i);
-//	temp = lem_in->ant;
-//	i++;
-
-	while (i <= num_ants)
-	{
-//		temp->next = create_ant(i);
-//		temp = temp->next;
-		
-		ft_printf("got into handle_num_ants's while loop\n");
-
-		temp = create_ant(i);
-		temp->next = lem_in->ant;
-		lem_in->ant = temp;
-		i++;
-	}
-//	ft_printf("lem_in->start is %p\n", lem_in->start);
-
-//	(lem_in->start)->ant = lem_in->ant;
-
-	lem_in->map = create_map_link(s, 0);
-	lem_in->map_start = lem_in->map;
-
-}
-
 void	handle_input(t_lem_in *lem_in)
 {
 	int		ret;
@@ -68,8 +34,10 @@ void	handle_input(t_lem_in *lem_in)
 
 		if (ret == 1)
 		{
-		(lem_in->map)->next = create_map_link(s, line_num);
-		lem_in->map = lem_in->map->next;
+//			ft_printf("lem_in->map is now: %p  s is now: %s\n", lem_in->map, s);
+
+			(lem_in->map)->next = create_map_link(s, line_num);
+			lem_in->map = lem_in->map->next;
 
 //		ft_printf("in handle_input. lem_in->map is now %s\n", (lem_in->map)->line);
 //		ft_printf("in handle_input. lem_in->map->next is now %s\n", ((lem_in->map)->next)->line);
@@ -114,4 +82,5 @@ void	handle_input(t_lem_in *lem_in)
 		free(s);
 		}
 	}
+	lem_in->map = NULL;
 }

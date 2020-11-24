@@ -19,6 +19,7 @@ int main(/*int argc, char **argv*/)
 	int ret;
 	char	*s;
 	t_lem_in *lem_in;
+	t_map	*temp;
 
 	lem_in = create_lem_in();
 
@@ -33,6 +34,14 @@ int main(/*int argc, char **argv*/)
 	free(s);
 
 	handle_input(lem_in);
+
+	temp = lem_in->map_start;
+	while (temp)
+	{
+		ft_printf("%s\n", temp->line);
+		temp = temp->next;
+	}
+	ft_printf("\n");
 
 	make_connections(lem_in);
 
