@@ -12,7 +12,7 @@
 
 #include "includes/lem_in.h"
 
-void	handle_num_ants(char *s, t_lem_in *lem_in)
+int	handle_num_ants(char *s, t_lem_in *lem_in)
 {
 	int		num_ants;
 	int		i;
@@ -29,4 +29,6 @@ void	handle_num_ants(char *s, t_lem_in *lem_in)
 	}
 	lem_in->map = create_map_link(s, 0);
 	lem_in->map_start = lem_in->map;
+
+	return (num_ants);
 }

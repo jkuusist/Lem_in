@@ -14,7 +14,7 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 
-void	handle_input(t_lem_in *lem_in)
+void	handle_input(t_lem_in *lem_in, int num_ants)
 {
 	int		ret;
 	char	*s;
@@ -74,7 +74,7 @@ void	handle_input(t_lem_in *lem_in)
 			handle_link(s, lem_in);
 		else if (has_digit(s))
 		{
-			handle_room(s, lem_in, is_start, is_end);
+			handle_room(s, lem_in, is_start, is_end, num_ants);
 			is_start = 0;
 			is_end = 0;
 		}

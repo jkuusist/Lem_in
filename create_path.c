@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_lem_in.c                                    :+:      :+:    :+:   */
+/*   create_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkuusist <jkuusist@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/16 11:25:00 by jkuusist          #+#    #+#             */
-/*   Updated: 2020/09/16 11:25:00 by jkuusist         ###   ########.fr       */
+/*   Created: 2020/11/30 11:33:00 by jkuusist          #+#    #+#             */
+/*   Updated: 2020/11/30 11:33:00 by jkuusist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/lem_in.h"
 #include <stdlib.h>
 
-t_lem_in	*create_lem_in(void)
+t_path	*create_path()
 {
-	t_lem_in *new;
+	t_path *new;
 
-	if (!(new = (t_lem_in*)malloc(sizeof(t_lem_in))))
+	if (!(new = (t_path*)malloc(sizeof(t_path))))
 		exit(-1);
-	new->map = NULL;
-	new->num_rooms = 0;
-	new->room = NULL;
-	new->start = NULL;
-	new->end = NULL;
-	new->ant = NULL;
-	new->paths = NULL;
+	new->head = NULL;
+	new->len = 0;
+	new->next = NULL;
+
 	return (new);
 }

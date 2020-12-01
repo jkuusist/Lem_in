@@ -14,7 +14,7 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 
-void	handle_room(char *s, t_lem_in *lem_in, int is_start, int is_end)
+void	handle_room(char *s, t_lem_in *lem_in, int is_start, int is_end, int num_ants)
 {
 	t_room	*new;
 	char	*s_start;
@@ -49,6 +49,7 @@ void	handle_room(char *s, t_lem_in *lem_in, int is_start, int is_end)
 	{
 		lem_in->start = new;
 		new->is_start = 1;
+		new->ants_here = num_ants;
 	}
 	else if (is_end)
 	{

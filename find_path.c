@@ -14,98 +14,106 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 
-static t_room	**create_room_array(t_room **rooms, int room_count)
+t_link			*get_link(t_lem_in *lem_in, t_room *start, t_room *end)
 {
-	t_room			**temp;
-	t_room			**new;
-	t_connection	*path;
-	int				i;
+	t_link *current;
 
-	i = 0;
-	if (!(new = (t_room**)malloc(sizeof(t_room**) * (room_count + 1))))
-		exit(-1);
-	temp = rooms;
-	while (*temp)
+	current = lem_in->link;
+	while (current)
 	{
-		path = (*temp)->connection;
-
-		while (path)
-		{
-			if (!((path->to_room)->has_ant))
-			{
-				new[i] = path->to_room;
-				i++;
-			}
-			path = path->next;
-		}
-		temp++;
+		if (start && (current->room_one == start))
+			return (current);
+		if (end && (current->room_two == end))
+			return (current);
+		current = current->next;
 	}
-	new[i] = NULL;
-
-	return (new);
+	return (NULL);
 }
 
-static int		check_paths(t_lem_in *lem_in, t_room **rooms, t_room **new, int room_count)
+static void		add_link_to_path(t_path *path, t_link *link)
 {
-	t_room			**temp;
-	t_connection	*path;
+	t_link *previous;
+	t_link *current;
 
-	temp = rooms;
-	while (*temp)
+	previous = NULL;
+	current = path->head;
+	if (current)
 	{
-		(*temp)->has_ant = 1;
-		path = (*temp)->connection;
-		while (path)
+		while (current)
 		{
-			room_count++;
-			if (path->to_room == lem_in->end)
-			{
-				(*temp)->path_next = lem_in->end;
-				(lem_in->end)->path_previous = *temp;
-				lem_in->path = *temp;
-				return (1);
-			}
-			path = path->next;
+			previous = current;
+			current = current->next;
 		}
-		temp++;
+		link->previous = previous;
+		previous->next = link;
 	}
-	if (!room_count || !(new = (create_room_array(rooms, room_count))) || !(check_paths(lem_in, new, NULL, 0)))
+	else
+		path->head = link;
+	path->len++;
+}
+
+static t_link	*remove_link(t_lem_in *lem_in, t_link *link)
+{
+	t_link *previous;
+	t_link *current;
+
+	previous = NULL;
+	current = lem_in->link;
+
+	while (current && (current != link))
 	{
-		free(new);
-		return(0);
+		previous = current;
+		current = current->next;
 	}
-	temp = rooms;
-	while (*temp)
+	if (!previous && current)
+		lem_in->link = current->next;
+	else if (current)
+		previous->next = current->next;
+	link->next = NULL;
+	return (link);
+}
+
+static void		add_path(t_lem_in *lem_in, t_path *path)
+{
+	t_path *previous;
+	t_path *current;
+
+	previous = NULL;
+	current = lem_in->paths;
+	if (current)
 	{
-		path = (*temp)->connection;
-
-//		ft_printf("*temp is %s\n", (*temp)->name);
-
-		while (path)
+		while (current && (path->len > current->len))
 		{
-			if ((path->to_room == lem_in->path) && (path->to_room != *temp))
-			{
-				(*temp)->path_next = lem_in->path;
-				(lem_in->path)->path_previous = *temp;
-				lem_in->path = *temp;
-			}
-			path = path->next;
+			previous = current;
+			current = current->next;
 		}
-		temp++;
+		if (!previous)
+			lem_in->paths = path;
+		else
+			previous->next = path;
+		path->next = current;
 	}
-	free(new);
-	return (1);
+	else
+		lem_in->paths = path;
 }
 
 void			find_path(t_lem_in *lem_in)
 {
-	t_room	**rooms;
+	t_path *path;
+	t_link *link;
 
-	if (!(rooms = (t_room**)malloc(sizeof(t_room*) * 2)))
-		exit(-1);
-	rooms[0] = lem_in->start;
-	rooms[1] = NULL;
- 	if (!(check_paths(lem_in, rooms, NULL, 0)))
-		handle_error(); //TBI
-	free(rooms);
+	while (lem_in->link)
+	{
+		path = create_path();
+		link = get_link(lem_in, lem_in->start, NULL);
+
+
+		add_link_to_path(path, remove_link(lem_in, link));
+		while (link->room_two != lem_in->end)
+		{
+			link = get_link(lem_in, link->room_two, NULL);
+			add_link_to_path(path, remove_link(lem_in, link));
+		}
+		add_path(lem_in, path);
+	}
 }

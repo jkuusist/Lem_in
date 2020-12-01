@@ -20,6 +20,7 @@ int main(/*int argc, char **argv*/)
 	char	*s;
 	t_lem_in *lem_in;
 	t_map	*temp;
+	int		num_ants;
 
 	lem_in = create_lem_in();
 
@@ -29,11 +30,11 @@ int main(/*int argc, char **argv*/)
 		return (-1);
 
 	//FIRST INPUT IS ALWAYS THE NUMBER OF ANTS
-	handle_num_ants(s, lem_in);
+	num_ants = handle_num_ants(s, lem_in);
 
 	free(s);
 
-	handle_input(lem_in);
+	handle_input(lem_in, num_ants);
 
 	temp = lem_in->map_start;
 	while (temp)

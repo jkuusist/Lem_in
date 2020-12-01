@@ -16,10 +16,10 @@ HEDR =
 
 LIBFT = ./libft
 
-SRCS = create_ant.c create_lem_in.c create_map_link.c destroy_lem_in.c find_path.c ft_atoi_error.c handle_error.c handle_input.c handle_link.c handle_num_ants.c handle_room.c has_digit.c main.c make_connections.c move_ants.c
+SRCS = create_ant.c create_lem_in.c create_map_link.c create_path.c destroy_lem_in.c find_path.c ft_atoi_error.c handle_error.c handle_input.c handle_link.c handle_num_ants.c handle_room.c has_digit.c main.c make_connections.c move_ants.c
 
 OBJS = $(SRCS:.c=.o)
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g
 all: $(NAME)
 
 $(NAME):
