@@ -57,6 +57,7 @@ void	handle_link(char *s, t_lem_in *lem_in)
 	if (is_found == 0)
 		handle_error(); //TBI
 	new->next = NULL;
+	new->previous = NULL;
 	if (!(lem_in->link))
 		lem_in->link = new;
 	else

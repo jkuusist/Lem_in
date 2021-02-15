@@ -70,6 +70,7 @@ static void	destroy_rooms(t_room *room)
 		destroy_rooms(next);
 }
 
+/*
 static void	destroy_links(t_link *link)
 {
 //	ft_printf("got to start of destroy_links. link is %p\n", link);
@@ -81,6 +82,7 @@ static void	destroy_links(t_link *link)
 	if (next)
 		destroy_links(next);
 }
+*/
 
 void	destroy_lem_in(t_lem_in *lem_in)
 {
@@ -88,7 +90,7 @@ void	destroy_lem_in(t_lem_in *lem_in)
 	destroy_ants(lem_in->ant);
 	destroy_maps(lem_in->map_start);
 	destroy_rooms(lem_in->room);
-	destroy_links(lem_in->link);
+//	destroy_links(lem_in->link);
 	free(lem_in);
 
 //	ft_printf("got to end of destroy\n");

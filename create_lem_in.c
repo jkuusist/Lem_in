@@ -16,6 +16,7 @@
 t_lem_in	*create_lem_in(void)
 {
 	t_lem_in *new;
+	t_path_array new_arr;
 
 	if (!(new = (t_lem_in*)malloc(sizeof(t_lem_in))))
 		exit(-1);
@@ -25,6 +26,10 @@ t_lem_in	*create_lem_in(void)
 	new->start = NULL;
 	new->end = NULL;
 	new->ant = NULL;
-	new->paths = NULL;
+
+//	new->paths = NULL;
+	init_path_array(&new_arr, 5);
+	new->paths = &new_arr;
+
 	return (new);
 }

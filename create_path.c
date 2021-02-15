@@ -21,6 +21,7 @@ t_path	*create_path()
 		exit(-1);
 	new->head = NULL;
 	new->len = 0;
+	new->rooms = NULL;
 	new->next = NULL;
 
 	return (new);

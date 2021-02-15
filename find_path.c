@@ -11,109 +11,49 @@
 /* ************************************************************************** */
 
 #include "includes/lem_in.h"
-#include "libft/libft.h"
 #include <stdlib.h>
 
-t_link			*get_link(t_lem_in *lem_in, t_room *start, t_room *end)
+#include "libft/libft.h"
+#include <stdio.h>
+
+void depth_first_traversal(t_lem_in *lem_in, t_room *room, t_path_array *path_array, t_room_array *current_path)
 {
-	t_link *current;
+	t_connection *connection;
 
-	current = lem_in->link;
-	while (current)
+	connection = room->connection;
+
+	insert_room_into_array(current_path, room);
+	room->is_visited = 1;
+	if (connection->to_room->is_end)
 	{
-		if (start && (current->room_one == start))
-			return (current);
-		if (end && (current->room_two == end))
-			return (current);
-		current = current->next;
-	}
-	return (NULL);
-}
-
-static void		add_link_to_path(t_path *path, t_link *link)
-{
-	t_link *previous;
-	t_link *current;
-
-	previous = NULL;
-	current = path->head;
-	if (current)
-	{
-		while (current)
-		{
-			previous = current;
-			current = current->next;
-		}
-		link->previous = previous;
-		previous->next = link;
+		printf("PATH IS:\n");
+		for (unsigned int i = 0; i < current_path->used; i++)
+			printf("  %s\n", current_path->array[i]->name);
 	}
 	else
-		path->head = link;
-	path->len++;
-}
-
-static t_link	*remove_link(t_lem_in *lem_in, t_link *link)
-{
-	t_link *previous;
-	t_link *current;
-
-	previous = NULL;
-	current = lem_in->link;
-
-	while (current && (current != link))
 	{
-		previous = current;
-		current = current->next;
-	}
-	if (!previous && current)
-		lem_in->link = current->next;
-	else if (current)
-		previous->next = current->next;
-	link->next = NULL;
-	return (link);
-}
-
-static void		add_path(t_lem_in *lem_in, t_path *path)
-{
-	t_path *previous;
-	t_path *current;
-
-	previous = NULL;
-	current = lem_in->paths;
-	if (current)
-	{
-		while (current && (path->len > current->len))
+		while (connection)
 		{
-			previous = current;
-			current = current->next;
+			if (!(connection->to_room->is_visited))
+				depth_first_traversal(lem_in, connection->to_room, path_array, current_path);
+			connection = connection->next;
 		}
-		if (!previous)
-			lem_in->paths = path;
-		else
-			previous->next = path;
-		path->next = current;
 	}
-	else
-		lem_in->paths = path;
+	remove_room_from_array(current_path, room);
+	room->is_visited = 0;
 }
 
-void			find_path(t_lem_in *lem_in)
+void	find_path(t_lem_in *lem_in)
 {
-	t_path *path;
-	t_link *link;
+	t_path_array path_array;
+	t_room_array current_path;
 
-	while (lem_in->link)
-	{
-		path = create_path();
-		link = get_link(lem_in, lem_in->start, NULL);
+	init_path_array(&path_array, 10);
+	init_room_array(&current_path, 10);
 
+	depth_first_traversal(lem_in, lem_in->start, &path_array, &current_path);
 
-		add_link_to_path(path, remove_link(lem_in, link));
-		while (link->room_two != lem_in->end)
-		{
-			link = get_link(lem_in, link->room_two, NULL);
-			add_link_to_path(path, remove_link(lem_in, link));
-		}
-		add_path(lem_in, path);
-	}
+	lem_in->paths = &path_array;
+
+	free_room_array(&current_path);
 }

@@ -39,12 +39,13 @@ void	handle_room(char *s, t_lem_in *lem_in, int is_start, int is_end, int num_an
 	new->name = ft_strndup(s_start, (s - s_start));
 	new->is_start = 0;
 	new->is_end = 0;
-	new->has_ant = 0;
+	new->is_visited = 0;
 	new->connection = NULL;
 	new->next = NULL;
 	new->path_next = NULL;
 	new->path_previous = NULL;
 	new->ant = NULL;
+	new->in_path = 0;
 	if (is_start)
 	{
 		lem_in->start = new;
