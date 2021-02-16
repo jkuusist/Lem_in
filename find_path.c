@@ -18,7 +18,10 @@
 
 void depth_first_traversal(t_lem_in *lem_in, t_room *room, t_path_array *path_array, t_room_array *current_path)
 {
-	t_connection *connection;
+	t_connection	*connection;
+	t_path			*new_path;
+	t_path			*new_path_start;
+	t_path			*path_next;
 
 	connection = room->connection;
 
@@ -26,9 +29,34 @@ void depth_first_traversal(t_lem_in *lem_in, t_room *room, t_path_array *path_ar
 	room->is_visited = 1;
 	if (connection->to_room->is_end)
 	{
+		new_path = create_path();
+
+		new_path->room = current_path->array[0];
+
+		new_path_start = new_path;
+
+		for (unsigned int i = 1; i < current_path->used; i++)
+		{
+			path_next = create_path();
+			path_next->room = current_path->array[i];			
+
+			if (!(new_path->next))
+				new_path->next = path_next;
+			else
+			{
+				while (new_path->next)
+					new_path = new_path->next;
+				new_path->next = path_next;
+			}
+		} 
+
+		insert_path_into_array(path_array, new_path_start);
+
+/*
 		printf("PATH IS:\n");
 		for (unsigned int i = 0; i < current_path->used; i++)
 			printf("  %s\n", current_path->array[i]->name);
+*/
 	}
 	else
 	{

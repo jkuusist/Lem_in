@@ -26,7 +26,8 @@ void	init_room_array(t_room_array *arr, unsigned int size)
 
 void	insert_room_into_array(t_room_array *arr, t_room *room)
 {
-//	printf("inserting room %s into room array %p\n", room->name, arr);
+//	printf("arr is %p\n", arr);
+//	printf("arr->size is %u. arr->used is %u\n", arr->size, arr->used);
 
 	if (room)
 	{

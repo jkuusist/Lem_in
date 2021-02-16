@@ -16,13 +16,16 @@
 t_path	*create_path()
 {
 	t_path *new;
+//	t_room_array new_arr;
 
 	if (!(new = (t_path*)malloc(sizeof(t_path))))
 		exit(-1);
-	new->head = NULL;
+	new->room = NULL;
 	new->len = 0;
-	new->rooms = NULL;
 	new->next = NULL;
+
+//	init_room_array(&new_arr, 5);
+//	new->rooms = &new_arr;
 
 	return (new);
 }

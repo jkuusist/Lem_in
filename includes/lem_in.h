@@ -40,8 +40,7 @@ typedef struct	s_room_array
 
 typedef struct	s_path
 {
-	t_room			*head;
-	t_room_array	*rooms;
+	t_room			*room;
 	int				len;
 	struct s_path	*next;
 }				t_path;
