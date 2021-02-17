@@ -127,5 +127,6 @@ void			remove_room_from_array(t_room_array *arr, t_room *room);
 t_path_array	*init_path_array(unsigned int size);
 void			insert_path_into_array(t_path_array *arr, t_path *room);
 void			free_path_array(t_path_array *arr);
+void			sort_paths(t_path **paths, int low, int high);
 
 #endif

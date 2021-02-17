@@ -40,13 +40,14 @@ void move_ants(t_lem_in *lem_in)
 {
 	get_path_lengths(lem_in);
 
+	printf("before sorting:\n");
 	for (unsigned int i = 0; i < lem_in->paths->used; i++)
-	{
 		printf("path[%u]->len is %u\n", i, lem_in->paths->array[i]->len);
 
-	}
+	if (lem_in->paths->used > 1)
+		sort_paths(lem_in->paths->array, 0, (lem_in->paths->used - 1));
 
-	printf("lem_in->paths->size is now %u. lem_in->paths->used is now %u\n", lem_in->paths->size, lem_in->paths->used);
-
-	printf("MOVE_ANTS PLACEHOLDER\n");
+	printf("\nafter sorting:\n");
+	for (unsigned int i = 0; i < lem_in->paths->used; i++)
+		printf("path[%u]->len is %u\n", i, lem_in->paths->array[i]->len);
 }
