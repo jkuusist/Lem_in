@@ -53,6 +53,8 @@ int main(/*int argc, char **argv*/)
 
 	move_ants(lem_in);
 
+	free_path_array(lem_in->paths);
+
 	destroy_lem_in(lem_in);
 
 	return (0);

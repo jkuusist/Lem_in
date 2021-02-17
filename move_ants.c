@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 
-void move_ants(t_lem_in *lem_in)
+static void	get_path_lengths(t_lem_in *lem_in)
 {
 	t_path *temp;
 
@@ -24,19 +24,29 @@ void move_ants(t_lem_in *lem_in)
 
 	for (unsigned int i = 0; i < used; i++)
 	{
-		printf("in loop. i is %u. used is %u\n", i, used);
 
 		temp = lem_in->paths->array[i];
 
-		printf("path[%u] is:\n", i);
-
 		while (temp)
 		{
-			printf("  %s\n", temp->room->name);
+			lem_in->paths->array[i]->len++;			
 
 			temp = temp->next;
 		}
 	}
+}
+
+void move_ants(t_lem_in *lem_in)
+{
+	get_path_lengths(lem_in);
+
+	for (unsigned int i = 0; i < lem_in->paths->used; i++)
+	{
+		printf("path[%u]->len is %u\n", i, lem_in->paths->array[i]->len);
+
+	}
+
+	printf("lem_in->paths->size is now %u. lem_in->paths->used is now %u\n", lem_in->paths->size, lem_in->paths->used);
 
 	printf("MOVE_ANTS PLACEHOLDER\n");
 }

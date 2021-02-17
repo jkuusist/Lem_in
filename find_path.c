@@ -73,15 +73,17 @@ void depth_first_traversal(t_lem_in *lem_in, t_room *room, t_path_array *path_ar
 
 void	find_path(t_lem_in *lem_in)
 {
-	t_path_array path_array;
+	t_path_array *path_array;
 	t_room_array current_path;
 
-	init_path_array(&path_array, 10);
+//	init_path_array(&path_array, 10);
+	path_array = init_path_array(10);
+
 	init_room_array(&current_path, 10);
 
-	depth_first_traversal(lem_in, lem_in->start, &path_array, &current_path);
+	depth_first_traversal(lem_in, lem_in->start, path_array, &current_path);
 
-	lem_in->paths = &path_array;
+	lem_in->paths = path_array;
 
 	free_room_array(&current_path);
 }

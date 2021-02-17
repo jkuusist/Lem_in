@@ -16,20 +16,23 @@
 
 #include <stdio.h>
 
-void	init_path_array(t_path_array *arr, unsigned int size)
+t_path_array	*init_path_array(/*t_path_array *arr,*/ unsigned int size)
 {
-	arr->array = (t_path**)malloc(sizeof(t_path*) * size);
-	ft_bzero(arr->array, size);
-	arr->used = 0;
-	arr->size = size;
+	t_path_array *new;
+
+	new = (t_path_array*)malloc(sizeof(t_path_array));
+	new->array = (t_path**)malloc(sizeof(t_path*) * size);
+	ft_bzero(new->array, size);
+	new->used = 0;
+	new->size = size;
+
+	return (new);
 }
 
 void	insert_path_into_array(t_path_array *arr, t_path *path)
 {
 	if (arr->used == arr->size)
 	{
-		printf("ARRAY FULL\n");
-
 		arr->size *= 2;
 		arr->array = realloc(arr->array, (sizeof(t_path*) * arr->size));
 
@@ -45,4 +48,5 @@ void	free_path_array(t_path_array *arr)
 	arr->array = NULL;
 	arr->used = 0;
 	arr->size = 0;
+	free(arr);
 }

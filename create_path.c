@@ -22,6 +22,7 @@ t_path	*create_path()
 		exit(-1);
 	new->room = NULL;
 	new->len = 0;
+	new->ants_in_path = 0;
 	new->next = NULL;
 
 //	init_room_array(&new_arr, 5);

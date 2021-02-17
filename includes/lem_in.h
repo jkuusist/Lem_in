@@ -41,7 +41,8 @@ typedef struct	s_room_array
 typedef struct	s_path
 {
 	t_room			*room;
-	int				len;
+	unsigned int	len;
+	unsigned int	ants_in_path;
 	struct s_path	*next;
 }				t_path;
 
@@ -122,8 +123,8 @@ t_path			*create_path();
 void			init_room_array(t_room_array *arr, unsigned int size);
 void			insert_room_into_array(t_room_array *arr, t_room *room);
 void			free_room_array(t_room_array *arr);
-void	remove_room_from_array(t_room_array *arr, t_room *room);
-void			init_path_array(t_path_array *arr, unsigned int size);
+void			remove_room_from_array(t_room_array *arr, t_room *room);
+t_path_array	*init_path_array(unsigned int size);
 void			insert_path_into_array(t_path_array *arr, t_path *room);
 void			free_path_array(t_path_array *arr);
 
