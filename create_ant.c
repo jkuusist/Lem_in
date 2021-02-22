@@ -33,6 +33,7 @@ t_ant	*create_ant(int num)
 		exit(-1);
 	new->num = num;
 	new->location = NULL;
+	new->path_index = 0;
 	new->next = NULL;
 	return (new);
 }

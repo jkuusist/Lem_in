@@ -88,6 +88,7 @@ typedef struct	s_ant
 {
 	int				num;
 	struct s_room	*location;
+	unsigned int	path_index;
 	struct s_ant	*next;
 }				t_ant;
 
