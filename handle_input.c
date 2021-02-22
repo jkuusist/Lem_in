@@ -14,7 +14,7 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 
-void	handle_input(t_lem_in *lem_in, int num_ants)
+void	handle_input(t_lem_in *lem_in)
 {
 	int		ret;
 	char	*s;
@@ -28,19 +28,13 @@ void	handle_input(t_lem_in *lem_in, int num_ants)
 	is_end = 0;
 	while (ret == 1)
 	{
-//		ft_printf("in input loop. lem_in->room is %p\n", lem_in->room);
-
 		ret = get_next_line(0, &s);
 
 		if (ret == 1)
 		{
-//			ft_printf("lem_in->map is now: %p  s is now: %s\n", lem_in->map, s);
 
 			(lem_in->map)->next = create_map_link(s, line_num);
 			lem_in->map = lem_in->map->next;
-
-//		ft_printf("in handle_input. lem_in->map is now %s\n", (lem_in->map)->line);
-//		ft_printf("in handle_input. lem_in->map->next is now %s\n", ((lem_in->map)->next)->line);
 	
 		if (s[0] == '#')
 		{
@@ -74,7 +68,7 @@ void	handle_input(t_lem_in *lem_in, int num_ants)
 			handle_link(s, lem_in);
 		else if (has_digit(s))
 		{
-			handle_room(s, lem_in, is_start, is_end, num_ants);
+			handle_room(s, lem_in, is_start, is_end, lem_in->num_ants);
 			is_start = 0;
 			is_end = 0;
 		}

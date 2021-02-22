@@ -26,9 +26,8 @@ typedef struct	s_room
 	struct s_room		*path_next;
 	struct s_room		*path_previous;
 	struct s_ant		*ant;
-	int					ants_here;
+	unsigned int		ants_here;
 	int					ant_num;
-	int					in_path;
 }				t_room;
 
 typedef struct	s_room_array
@@ -64,8 +63,8 @@ typedef struct	s_lem_in
 	struct s_room		*end;
 	struct s_ant		*ant;
 	struct s_path_array	*paths;
-	int					ant_num;
 	struct s_location	*location;
+	unsigned int		num_ants;
 }				t_lem_in;
 
 typedef struct	s_map
@@ -88,6 +87,7 @@ typedef struct	s_link
 typedef struct	s_ant
 {
 	int				num;
+	struct s_room	*location;
 	struct s_ant	*next;
 }				t_ant;
 
@@ -107,7 +107,7 @@ typedef struct	s_location
 
 t_lem_in		*create_lem_in(void);
 void			destroy_lem_in(t_lem_in *lem_in);
-void			handle_input(t_lem_in *lem_in, int num_ants);
+void			handle_input(t_lem_in *lem_in);
 int				handle_num_ants(char *s, t_lem_in *lem_in);
 t_map			*create_map_link(char *s, int line_num);
 long long		ft_atoi_error(const char *str);
@@ -128,5 +128,6 @@ t_path_array	*init_path_array(unsigned int size);
 void			insert_path_into_array(t_path_array *arr, t_path *room);
 void			free_path_array(t_path_array *arr);
 void			sort_paths(t_path **paths, int low, int high);
+void			add_ants_to_start(t_lem_in *lem_in);
 
 #endif
