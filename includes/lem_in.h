@@ -87,8 +87,7 @@ typedef struct	s_link
 typedef struct	s_ant
 {
 	int				num;
-	struct s_room	*location;
-	unsigned int	path_index;
+	t_path			*path;
 	struct s_ant	*next;
 }				t_ant;
 

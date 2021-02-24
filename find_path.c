@@ -48,15 +48,16 @@ void depth_first_traversal(t_lem_in *lem_in, t_room *room, t_path_array *path_ar
 					new_path = new_path->next;
 				new_path->next = path_next;
 			}
-		} 
+
+		}
+
+		new_path = new_path->next;
+
+		path_next = create_path();
+		path_next->room = lem_in->end;
+		new_path->next = path_next;
 
 		insert_path_into_array(path_array, new_path_start);
-
-/*
-		printf("PATH IS:\n");
-		for (unsigned int i = 0; i < current_path->used; i++)
-			printf("  %s\n", current_path->array[i]->name);
-*/
 	}
 	else
 	{

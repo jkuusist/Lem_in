@@ -12,7 +12,7 @@
 
 #include "includes/lem_in.h"
 #include <stdlib.h>
-
+/*
 void	add_ants_to_start(t_lem_in *lem_in)
 {
 	t_ant *temp;
@@ -24,7 +24,7 @@ void	add_ants_to_start(t_lem_in *lem_in)
 		temp = temp->next;
 	}
 }
-
+*/
 t_ant	*create_ant(int num)
 {
 	t_ant *new;
@@ -32,8 +32,8 @@ t_ant	*create_ant(int num)
 	if (!(new = (t_ant*)malloc(sizeof(t_ant))))
 		exit(-1);
 	new->num = num;
-	new->location = NULL;
-	new->path_index = 0;
+//	new->path_index = 0;
+	new->path = NULL;
 	new->next = NULL;
 	return (new);
 }
