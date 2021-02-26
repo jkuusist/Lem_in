@@ -38,7 +38,8 @@ int main(/*int argc, char **argv*/)
 
 	handle_input(lem_in);
 
-//	add_ants_to_start(lem_in);
+	if (!lem_in->start || !lem_in->end)
+		handle_error();
 
 	temp = lem_in->map_start;
 	while (temp)
