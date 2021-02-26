@@ -81,30 +81,10 @@ void move_ants(t_lem_in *lem_in)
 		sort_paths(lem_in->paths->array, 0, (lem_in->paths->used - 1));
 
 	assign_ant_paths(lem_in);
-/*
-	while (ant_start)
-	{
-		printf("ant %u is now in room %s\n", ant_start->num, ant_start->path->room->name);
-
-		ant_start = ant_start->next;
-	}
-*/
 
 	while (lem_in->end->ants_here != lem_in->num_ants)
 	{
-/*
 		ant_start = lem_in->ant;
-		
-		while (ant_start)
-		{
-			printf("ant %u is now in room %s\n", ant_start->num, ant_start->path->room->name);
-
-			ant_start = ant_start->next;
-		}
-*/
-		ant_start = lem_in->ant;
-
-//		printf("end->ants_here is %u\n", lem_in->end->ants_here);
 
 		while (ant_start)
 		{
@@ -123,33 +103,4 @@ void move_ants(t_lem_in *lem_in)
 
 		printf("\n");
 	}
-
-/*
-	ant_start = lem_in->ant;
-
-	while (ant_start)
-	{
-		printf("ant %u is now in room %s\n", ant_start->num, ant_start->path->room->name);
-
-		ant_start = ant_start->next;
-	}
-*/
-/*
-	t_ant *temp = lem_in->ant;
-
-	while (temp)
-	{
-		t_path *temp_path = temp->path;
-
-		printf("ant %d's path is:\n", temp->num);
-
-		while (temp_path)
-		{
-			printf("  %s\n", temp_path->room->name);
-			temp_path = temp_path->next;
-		}
-
-		temp = temp->next;
-	}
-*/
 }

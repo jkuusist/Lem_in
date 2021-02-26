@@ -49,7 +49,23 @@ int main(/*int argc, char **argv*/)
 	ft_printf("\n");
 
 	make_connections(lem_in);
+/*
+	t_room* tempr = lem_in->room;
+	while (tempr)
+	{
+		printf("room %s is connected to:\n", tempr->name);
 
+		t_connection *tempc = tempr->connection;
+		while (tempc)
+		{
+			printf("  %s\n", tempc->to_room->name);
+
+			tempc = tempc->next;
+		}
+
+		tempr = tempr->next;
+	}
+*/
 	find_path(lem_in);
 
 	move_ants(lem_in);
