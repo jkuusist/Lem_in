@@ -26,21 +26,13 @@ static void destroy_ants(t_ant* ant)
 
 static void	destroy_maps(t_map *map)
 {
-//	ft_printf("got to start of destroy_maps. map is %p\n", map);
-
 	t_map *next;
-
-//	ft_printf("in destroy_map. current line is: %s\n", map->line);
 
 	next = map->next;
 	if (map->line)
 		free(map->line);
 
-//	ft_printf("1111 map is %p\n", map);
-
 	free(map);
-
-//	ft_printf("2222\n");
 
 	if (next)
 		destroy_maps(next);
@@ -48,8 +40,6 @@ static void	destroy_maps(t_map *map)
 
 static void	destroy_rooms(t_room *room)
 {
-//	ft_printf("got to start of destroy_rooms. room is %p\n", room);
-
 	t_room			*next;
 	t_connection	*temp;
 
@@ -58,8 +48,6 @@ static void	destroy_rooms(t_room *room)
 
 	while (room->connection)
 	{
-//		if (temp)
-//			ft_printf("in connection free-er. temp->to_room is %s\n", temp->to_room);
 		temp = room->connection;
 		room->connection = (room->connection)->next;
 		if (temp)
@@ -70,11 +58,9 @@ static void	destroy_rooms(t_room *room)
 		destroy_rooms(next);
 }
 
-/*
+
 static void	destroy_links(t_link *link)
 {
-//	ft_printf("got to start of destroy_links. link is %p\n", link);
-
 	t_link *next;
 
 	next = link->next;
@@ -82,16 +68,14 @@ static void	destroy_links(t_link *link)
 	if (next)
 		destroy_links(next);
 }
-*/
 
 void	destroy_lem_in(t_lem_in *lem_in)
 {
-//	ft_printf("got to start of destroy\n");
 	destroy_ants(lem_in->ant);
 	destroy_maps(lem_in->map_start);
 	destroy_rooms(lem_in->room);
-//	destroy_links(lem_in->link);
+	destroy_links(lem_in->link);
+	if (lem_in->paths)
+		free_path_array(lem_in->paths);
 	free(lem_in);
-
-//	ft_printf("got to end of destroy\n");
 }
