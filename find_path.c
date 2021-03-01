@@ -78,5 +78,5 @@ void	find_path(t_lem_in *lem_in)
 	free_room_array(&current_path);
 
 	if (path_array->used == 0)
-		handle_error();
+		handle_error(lem_in);
 }

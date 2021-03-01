@@ -43,13 +43,13 @@ void	handle_input(t_lem_in *lem_in)
 				if (!(ft_strcmp("##start", s)))
 				{
 					if (lem_in->start)
-						handle_error(); //TBI
+						handle_error(lem_in);
 					is_start = 1;
 				}
 				else if (!(ft_strcmp("##end", s)))
 				{
 					if (lem_in->end)
-						handle_error(); //TBI
+						handle_error(lem_in);
 					is_end = 1;
 				}
 				else

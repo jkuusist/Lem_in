@@ -31,7 +31,6 @@ int main(/*int argc, char **argv*/)
 	if (ret == -1)
 		return (-1);
 
-	//FIRST INPUT IS ALWAYS THE NUMBER OF ANTS
 	lem_in->num_ants = handle_num_ants(s, lem_in);
 
 	free(s);
@@ -39,7 +38,7 @@ int main(/*int argc, char **argv*/)
 	handle_input(lem_in);
 
 	if (!lem_in->start || !lem_in->end)
-		handle_error();
+		handle_error(lem_in);
 
 	temp = lem_in->map_start;
 	while (temp)
@@ -50,23 +49,7 @@ int main(/*int argc, char **argv*/)
 	ft_printf("\n");
 
 	make_connections(lem_in);
-/*
-	t_room* tempr = lem_in->room;
-	while (tempr)
-	{
-		printf("room %s is connected to:\n", tempr->name);
 
-		t_connection *tempc = tempr->connection;
-		while (tempc)
-		{
-			printf("  %s\n", tempc->to_room->name);
-
-			tempc = tempc->next;
-		}
-
-		tempr = tempr->next;
-	}
-*/
 	find_path(lem_in);
 
 	move_ants(lem_in);

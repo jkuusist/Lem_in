@@ -59,8 +59,10 @@ void	remove_room_from_array(t_room_array *arr, t_room *room)
 		i++;
 	}
 
-	while (i < arr->size)
+	while (i < arr->size - 1)
 	{
+//		printf("arr->size is %d. i + 1 is %d\n", arr->size, i + 1);
+
 		arr->array[i] = arr->array[i + 1];
 
 		i++;

@@ -25,6 +25,7 @@ t_lem_in	*create_lem_in(void)
 	new->map = NULL;
 	new->num_rooms = 0;
 	new->room = NULL;
+	new->link = NULL;
 	new->start = NULL;
 	new->end = NULL;
 	new->ant = NULL;

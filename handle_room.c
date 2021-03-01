@@ -23,9 +23,9 @@ void	handle_room(char *s, t_lem_in *lem_in, int is_start, int is_end, int num_an
 	s_start = s;
 	temp = lem_in->room;
 	if (!(new = (t_room*)malloc(sizeof(t_room))))
-		exit (-1);
+		handle_error(lem_in);
 	if ((s[0] == 'L') || (s[0] == '#'))
-		handle_error(); //TBI
+		handle_error(lem_in);
 	while (*s)
 		s++;
 	s--;

@@ -20,7 +20,7 @@ int	handle_num_ants(char *s, t_lem_in *lem_in)
 	int		i;
 	t_ant	*temp;
 
-	num_ants = ft_atoi_error(s);
+	num_ants = ft_atoi_error(s, lem_in);
 	i = num_ants;
 	while (i > 0)
 	{

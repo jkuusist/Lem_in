@@ -23,15 +23,13 @@ void	handle_link(char *s, t_lem_in *lem_in)
 	int		is_found;	
 
 	if (!(new = (t_link*)malloc(sizeof(t_link))))
-		exit(-1);
+		handle_error(lem_in);
 	rooms = ft_strsplit(s, '-');
 	temp = lem_in->room;
 	link_temp = lem_in->link;
 	is_found = 0;
 	if (rooms[2] != NULL)
-		handle_error(); //TBI
-
-	//MAYBE IMPLEMENT A HASHMAP FOR FASTER CHECKING OF WHETHER ROOM NAMES EXIST
+		handle_error(lem_in);
 	while (temp)
 	{
 		if (!(ft_strcmp(rooms[0], temp->name)))
@@ -42,7 +40,7 @@ void	handle_link(char *s, t_lem_in *lem_in)
 		temp = temp->next;
 	}
 	if (is_found == 0)
-		handle_error(); //TBI
+		handle_error(lem_in);
 	temp = lem_in->room;
 	is_found = 0;
 	while (temp)
@@ -55,7 +53,7 @@ void	handle_link(char *s, t_lem_in *lem_in)
 		temp = temp->next;
 	}
 	if (is_found == 0)
-		handle_error(); //TBI
+		handle_error(lem_in);
 	new->next = NULL;
 	new->previous = NULL;
 	if (!(lem_in->link))

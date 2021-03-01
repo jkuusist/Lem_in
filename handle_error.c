@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "includes/lem_in.h"
 #include "libft/libft.h"
 #include <stdlib.h>
 
-void handle_error(/*int err_num*/)
+void handle_error(t_lem_in *lem_in)
 {
-	//temporary solution
-	//full functionality TBI
+	destroy_lem_in(lem_in);
 
-	ft_printf("Error\n");
+	ft_printf("ERROR\n");
 
 	exit(-1);
 }

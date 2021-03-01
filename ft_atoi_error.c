@@ -22,7 +22,7 @@ static int	is_whitespace(char c)
 		return (0);
 }
 
-long long	ft_atoi_error(const char *str)
+long long	ft_atoi_error(const char *str, t_lem_in *lem_in)
 {
 	int					i;
 	unsigned long long	res;
@@ -34,7 +34,7 @@ long long	ft_atoi_error(const char *str)
 	while (str[i]) //(((str[i] >= '0') && (str[i] <= '9')))
 	{
 		if (!(((str[i] >= '0') && (str[i] <= '9')) || (str[i] == '\0')))
-			handle_error(); //TBI
+			handle_error(lem_in);
 		res = res * 10 + ((unsigned long long)(str[i] - '0'));
 		i++;
 	}
