@@ -44,6 +44,19 @@ void	insert_path_into_array(t_path_array *arr, t_path *path)
 
 void	free_path_array(t_path_array *arr)
 {
+	t_path *temp;
+	t_path *next;
+
+	for (unsigned int i = 0; i < arr->used; i++)
+	{
+		temp = arr->array[i];
+		while (temp)
+		{
+			next = temp->next;
+			free(temp);
+			temp = next;
+		}
+	}
 	free(arr->array);
 	arr->array = NULL;
 	arr->used = 0;
