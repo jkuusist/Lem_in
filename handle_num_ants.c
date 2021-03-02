@@ -12,8 +12,6 @@
 
 #include "includes/lem_in.h"
 
-#include <stdio.h>
-
 int	handle_num_ants(char *s, t_lem_in *lem_in)
 {
 	int		num_ants;

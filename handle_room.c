@@ -42,8 +42,6 @@ void	handle_room(char *s, t_lem_in *lem_in, int is_start, int is_end, int num_an
 	new->is_visited = 0;
 	new->connection = NULL;
 	new->next = NULL;
-	new->path_next = NULL;
-	new->path_previous = NULL;
 	new->ant = NULL;
 	new->ants_here = 0;
 	if (is_start)

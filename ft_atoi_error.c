@@ -31,7 +31,7 @@ long long	ft_atoi_error(const char *str, t_lem_in *lem_in)
 	res = 0;
 	while (is_whitespace(str[i]))
 		i++;
-	while (str[i]) //(((str[i] >= '0') && (str[i] <= '9')))
+	while (str[i])
 	{
 		if (!(((str[i] >= '0') && (str[i] <= '9')) || (str[i] == '\0')))
 			handle_error(lem_in);

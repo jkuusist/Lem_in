@@ -14,8 +14,6 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 
-#include <stdio.h>
-
 t_path_array	*init_path_array(/*t_path_array *arr,*/ unsigned int size)
 {
 	t_path_array *new;
@@ -35,7 +33,6 @@ void	insert_path_into_array(t_path_array *arr, t_path *path)
 	{
 		arr->size *= 2;
 		arr->array = realloc(arr->array, (sizeof(t_path*) * arr->size));
-
 	}
 
 	arr->array[arr->used] = path;

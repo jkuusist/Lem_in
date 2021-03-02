@@ -22,12 +22,10 @@ typedef struct	s_room
 	int					is_end;
 	int					is_visited;
 	struct s_connection	*connection;
-	struct s_room		*next;
-	struct s_room		*path_next;
-	struct s_room		*path_previous;
 	struct s_ant		*ant;
 	unsigned int		ants_here;
 	int					ant_num;
+	struct s_room		*next;
 }				t_room;
 
 typedef struct	s_room_array
@@ -56,7 +54,6 @@ typedef struct	s_lem_in
 {
 	struct s_map		*map;
 	struct s_map		*map_start;
-	int					num_rooms;
 	struct s_room		*room;
 	struct s_link		*link;
 	struct s_room		*start;
@@ -74,14 +71,11 @@ typedef struct	s_map
 	struct s_map	*next;
 }				t_map;
 
-
 typedef struct	s_link
 {
 	struct s_room	*room_one;
 	struct s_room	*room_two;
 	struct s_link	*next;
-	struct s_link	*previous;
-	
 }				t_link;
 
 typedef struct	s_ant
@@ -96,14 +90,6 @@ typedef struct	s_connection
 	t_room 				*to_room;
 	struct s_connection	*next;
 }				t_connection;
-
-typedef struct	s_location
-{
-	struct s_room		*room;
-	int					ant_num;
-	struct s_location	*next;
-}				t_location;
-
 
 t_lem_in		*create_lem_in(void);
 void			destroy_lem_in(t_lem_in *lem_in);

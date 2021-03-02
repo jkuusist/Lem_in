@@ -13,28 +13,19 @@
 #include "includes/lem_in.h"
 #include <stdlib.h>
 
-#include <stdio.h>
-
 t_lem_in	*create_lem_in(void)
 {
 	t_lem_in *new;
-//	t_path_array new_arr;
 
 	if (!(new = (t_lem_in*)malloc(sizeof(t_lem_in))))
 		exit(-1);
 	new->map = NULL;
-	new->num_rooms = 0;
 	new->room = NULL;
 	new->link = NULL;
 	new->start = NULL;
 	new->end = NULL;
 	new->ant = NULL;
-
 	new->paths = NULL;
-//	init_path_array(&new_arr, 5);
-//	new.paths = &new_arr;
-
-//	printf("in cl. new->paths->size is %u. new->paths->used is %u\n", new->paths->size, new->paths->used);
 
 	return (new);
 }

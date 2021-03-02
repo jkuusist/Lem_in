@@ -55,7 +55,6 @@ void	handle_link(char *s, t_lem_in *lem_in)
 	if (is_found == 0)
 		handle_error(lem_in);
 	new->next = NULL;
-	new->previous = NULL;
 	if (!(lem_in->link))
 		lem_in->link = new;
 	else
@@ -64,7 +63,6 @@ void	handle_link(char *s, t_lem_in *lem_in)
 			link_temp = link_temp->next;
 		link_temp->next = new;
 	}
-	
 	free(rooms[0]);
 	free(rooms[1]);
 	free(rooms[2]);

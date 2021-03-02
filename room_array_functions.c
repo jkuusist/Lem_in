@@ -14,8 +14,6 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 
-#include <stdio.h>
-
 void	init_room_array(t_room_array *arr, unsigned int size)
 {
 	arr->array = (t_room**)malloc(sizeof(t_room*) * size);
@@ -26,9 +24,6 @@ void	init_room_array(t_room_array *arr, unsigned int size)
 
 void	insert_room_into_array(t_room_array *arr, t_room *room)
 {
-//	printf("arr is %p\n", arr);
-//	printf("arr->size is %u. arr->used is %u\n", arr->size, arr->used);
-
 	if (room)
 	{
 		if (arr->used == arr->size)
@@ -37,8 +32,6 @@ void	insert_room_into_array(t_room_array *arr, t_room *room)
 
 			arr->array = realloc(arr->array, (sizeof(t_room*) * arr->size));
 		}
-
-
 		arr->array[arr->used] = room;
 		arr->used++;
 	}
@@ -46,28 +39,20 @@ void	insert_room_into_array(t_room_array *arr, t_room *room)
 
 void	remove_room_from_array(t_room_array *arr, t_room *room)
 {
-//	printf("removing room %s from room array %p\n", room->name, arr);
-
 	unsigned int i;
 
 	i = 0;
-
 	while (i < arr->used)
 	{
 		if (arr->array[i] == room)
 			break;
 		i++;
 	}
-
 	while (i < arr->size - 1)
 	{
-//		printf("arr->size is %d. i + 1 is %d\n", arr->size, i + 1);
-
 		arr->array[i] = arr->array[i + 1];
-
 		i++;
 	}
-
 	arr->used--;
 }
 

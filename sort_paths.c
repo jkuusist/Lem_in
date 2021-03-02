@@ -12,8 +12,6 @@
 
 #include "includes/lem_in.h"
 
-#include <stdio.h>
-
 static void				swap(t_path **paths, unsigned int i, unsigned int j)
 {
 	t_path *temp;
