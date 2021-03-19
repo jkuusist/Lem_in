@@ -47,7 +47,7 @@ static void	assign_ant_paths(t_lem_in *lem_in)
 			while ((path_index < (lem_in->paths->used - 1)) &&
 				((lem_in->paths->array[path_index]->len +
 				lem_in->paths->array[path_index]->ants_in_path) >
-				lem_in->paths->array[path_index + 1]->len))
+				(lem_in->paths->array[path_index + 1]->len + lem_in->paths->array[path_index + 1]->ants_in_path)))
 			{
 				path_index++;
 			}
